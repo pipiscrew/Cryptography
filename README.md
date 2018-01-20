@@ -12,7 +12,9 @@ An example project to explore the cryptography options for :
 
   - AESCng
 
+--
 
+On other way around 
 
 *Inferno library is .NET crypto done right.*
 http://securitydriven.net/inferno/
