@@ -1,0 +1,33 @@
+Electronic Codebook Mode (EBC) ** The simplest and fastest mode, EBC allows ciphertext to be broken one block at a time and allows for codebook compilation. Encrypted blocks can be replaced without affecting the entire message. This mode is useful only where performance is the highest priority, at the expense of security.
+
+Cipher Block Chaining Mode (CBC) ** This mode uses an initialization vector (IV) to add feedback to the block transformation. This prevents the problems seen with EBC mode. Decryption requires knowing the IV, but this is not a secret and you can transmit it over an insecure connection.
+
+Cipher Feedback Mode (CFB) ** Uses an IV as CBC does but works with partial blocks, making it well suited for encrypting streaming data.
+
+https://www.securityfocus.com/excerpts/13/2
+
+*Name*            *Block Size*	*Cipher Modes*		*Key Lengths*
+DES            		64				CBC, ECB, and CFB	56 bits
+Triple DES (3DES)	64				CBC, ECB, and CFB	Two or three 56-bit keys
+Rijndael (AES)		128, 192, 256	CBC and ECB			128, 192, or 256 bits
+RC2					64				CBC, ECB, and CFB	40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, or 128 bits
+*Name*				*Block Size*	*Cipher Modes*		*Key Lengths*
+
+-------------
+
+None - No padding. Whole blocks are required.
+PKCS7 - Padding mode defined in RFC 2898, Section 6.1.1, Step 4, generalized to whatever block size is required.
+Zeros - Pad with zero bytes to fill out the last block.
+ANSIX923 - Fills the bytes with zeros and puts the number of padding bytes in the last byte.
+ISO 10126 - Same as PKCS7 except that it fills the bytes before the last one with random values.
+
+
+src - https://msdn.microsoft.com/en-us/library/aa738691(v=vs.90).aspx
+explained - https://en.wikipedia.org/wiki/Padding_%28cryptography%29
+
+
+-----
+
+
+Notes on Cryptography Ciphers: RSA, DSA, AES, RC4, ECC, ECDSA, SHA, and so on …
+https://rakhesh.com/infrastructure/notes-on-cryptography-ciphers-rsa-dsa-aes-rc4-ecc-ecdsa-sha-and-so-on/
