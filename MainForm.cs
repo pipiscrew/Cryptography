@@ -31,8 +31,9 @@ namespace asymmetric
             addform2tabpage(new frmDSA_ENCRYPT(), tabControl1.TabPages[1]);
             addform2tabpage(new RSA_HASH(), tabControl1.TabPages[2]);
             addform2tabpage(new RSA_ENCRYPT(), tabControl1.TabPages[3]);
-            addform2tabpage(new frmAES_ENCRYPT(), tabControl1.TabPages[4]);
-            addform2tabpage(new frmCNG(), tabControl1.TabPages[5]);
+            addform2tabpage(new PEM2_XML(), tabControl1.TabPages[4]);
+            addform2tabpage(new frmAES_ENCRYPT(), tabControl1.TabPages[5]);
+            addform2tabpage(new frmCNG(), tabControl1.TabPages[6]);
 
         }
 
