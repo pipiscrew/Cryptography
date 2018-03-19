@@ -27,7 +27,8 @@ JS - http://travistidwell.com/jsencrypt/
 
 --
 
-In short :
+*In short :*
+
 • 1854—Playfair cipher invented by Charles Wheatstone.
 
 • 1919—Edward Hebern invents the first rotor machine.
