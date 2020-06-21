@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -85,6 +86,63 @@ namespace asymmetric
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://certsimple.com/blog/measuring-ssl-rsa-keys");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (rsa_method.private_key == null)
+            {
+                MessageBox.Show("Please generate keypair!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(1024, new CspParameters { ProviderType = 1 });
+            rsa.FromXmlString(txtPrivate.Text);
+
+            byte[] secretData = Encoding.UTF8.GetBytes(txtContent.Text);
+            byte[] encrypted = rsa.PrivareEncryption(secretData);
+
+
+            txtBednerEncrypted.Text = Convert.ToBase64String(encrypted);
+            button5.Visible = (txtBednerEncrypted.Text.Length > 0);
+           
+        }
+
+        private void txtBednerEncrypted_TextChanged(object sender, EventArgs e)
+        {
+            label9.Text = txtBednerEncrypted.Text.Length.ToString();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (rsa_method.private_key == null)
+            {
+                MessageBox.Show("Please generate keypair!", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            byte[] buffer = Convert.FromBase64String(txtBednerEncrypted.Text);
+
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(1024, new CspParameters { ProviderType = 1 });
+            rsa.FromXmlString(txtPublic.Text);
+            
+            byte[] encrypted = rsa.PublicDecryption(buffer);
+
+
+            txtBednerDecrypted.Text = Encoding.UTF8.GetString(encrypted, 0, encrypted.Length); 
+            tabControl2.SelectedIndex = 1;
+        }
+
+        private void txtBednerDecrypted_TextChanged(object sender, EventArgs e)
+        {
+            label10.Text = txtBednerDecrypted.Text.Length.ToString();
+
+        
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://www.codeproject.com/Articles/38739/RSA-Private-Key-Encryption");
         }
     }
 }

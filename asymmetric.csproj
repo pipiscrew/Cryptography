@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -90,6 +91,7 @@
     <Compile Include="RSA\PEM2_XML.designer.cs">
       <DependentUpon>PEM2_XML.cs</DependentUpon>
     </Compile>
+    <Compile Include="RSA\RSAPrivateEncryption.cs" />
     <Compile Include="RSA\RSA_HASH.cs">
       <SubType>Form</SubType>
     </Compile>
